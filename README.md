@@ -1,18 +1,24 @@
-Still a Work in Progress...
+Easy CSS 3D space using ractive components
+
+```html
+<space>
+	ractive-rooms!
+	<floor width='1000' depth='1000' class='blue' y='-1'/>
+	<room z='200' height='100'/>
+	<room x='250' z='50' height='100'/>
+	<room x='300' z='300' height='100'/>
+</space>
+```
 
 ## To Install
 
 ```sh
-git clone https://github.com/martypdx/ractive-project.git
+git clone https://github.com/martypdx/ractive-rooms.git
 npm install
 gobble
 ```
 go to `localhost:4567`
 
-## Still to do
+## WIP
 
-* stylus instead of sass
-* adding cordova
-* incorporate ractive plugins
-* inheriting components
-* css preprocessor include folder
+Initial implementation, more to do, more to come...
