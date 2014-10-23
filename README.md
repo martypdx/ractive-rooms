@@ -1,5 +1,7 @@
 Easy CSS 3D space using ractive components
 
+See http://martypdx.github.io/ractive-rooms/
+
 ```html
 <space>
 	ractive-rooms!
