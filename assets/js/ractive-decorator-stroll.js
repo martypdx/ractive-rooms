@@ -1,5 +1,3 @@
-import Ractive from 'ractive';
-
 export default function stroll(node, property, max){
 
     var ractive = this,

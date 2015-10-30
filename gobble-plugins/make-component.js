@@ -19,17 +19,19 @@ module.exports = function makeComponent ( src, outputdir, options, callback ) {
 
 	try {
 		var components = fs.readdirSync(src).filter(isDirectory)
-		var list = "var Ractive = require('ractive');\n\n"
+		var imports = '';
+		var list = '';//"var Ractive = require('ractive');\n\n"
 
-		components.forEach(function(c){
-			list += "Ractive.components['" + c + "'] = require('./" + c + "');\n"
+		components.forEach( function( c, i ) {
+			imports += 'import C' + i + ' from "./' + c + '";\n';
+			list += "Ractive.components['" + c + "'] = C" + i + ";\n"
 			var file = readFile(c, 'html')
 			file += wrapFile('style', readFile(c, 'css') )
 			file += wrapFile('script', readFile(c, 'js') )
 			var write = join(outputdir, c + '.html')
 			fs.writeFileSync(write, file)
 		})
-		fs.writeFileSync(join(outputdir, 'components.js'), list)
+		fs.writeFileSync(join(outputdir, 'components.js'), imports + list)
 		callback()
 	} catch(err){
 		callback(err)

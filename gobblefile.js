@@ -1,15 +1,15 @@
 var gobble = require('gobble'),
 	makeComponent = require('./gobble-plugins/make-component'),
 	sass = require('./gobble-plugins/sass-file'),
-	join = require('path').join; //,
-// 	package = require( './package.json' ),
-// 	bundleModules = require( './gobble-bundle-modules' );
+	join = require('path').join,
+	package = require( './package.json' ),
+	bundleModules = require( './gobble-bundle-modules' );
 
-// var modules = gobble( 'assets/js/passthru' )
-// 	.transform( bundleModules, {
-// 		modules: Object.keys( package.dependencies ),
-// 		dest: 'modules.js'
-// 	});
+var modules = gobble( 'assets/js/passthru' )
+	.transform( bundleModules, {
+		modules: Object.keys( package.dependencies ),
+		dest: 'modules.js'
+	});
 
 var css = gobble('assets/scss').transform( 'sass', {
 	src: 'main.scss',
@@ -22,11 +22,17 @@ var components = gobble('assets/components')
 	.transform( sass, {
 		includePaths: [ join(process.cwd(), 'assets/scss/include') ]
 	})
-	.transform('babel')
+	.transform('babel', {
+		sourceMaps: true,
+		blacklist: ['es6.modules', 'strict']
+	})
 	.transform( makeComponent )
 	.transform('ractive', { type: 'es6' });
 
-var js = gobble( 'assets/js' ).transform( 'babel');
+var js = gobble( 'assets/js' ).transform( 'babel', {
+		sourceMaps: true,
+		blacklist: ['es6.modules', 'strict']
+	});
 
 var bundle = gobble([ js, components ]).transform( 'rollup', {
   // REQUIRED - the file to start bundling from
@@ -38,17 +44,18 @@ var bundle = gobble([ js, components ]).transform( 'rollup', {
 
   // what type of module to create - can be one of
   // 'amd', 'cjs', 'es6', 'iife', 'umd'. Defaults to 'cjs'
-  format: 'iife',
+  format: 'umd',
 
   // if generating a 'umd' module, and the entry module
   // (and therefore the bundle) has exports, specify
   // a global name
-  // moduleName: 'myApp', // becomes `window.myApp`
+  moduleName: 'myApp', // becomes `window.myApp`
 
+  globals: { ractive: 'Ractive' }
   //external: ['ractive']
 
 });
 
 var index = gobble('assets').include('index.html')
 
-module.exports = gobble( [ bundle, /*modules,*/ css, images, index ] );
+module.exports = gobble( [ bundle, modules, css, images, index ] );
