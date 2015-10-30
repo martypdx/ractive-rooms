@@ -1,19 +1,11 @@
-<div class='controls'>
-	<input type='range' value='{{x}}' min='-500' max='500'>
-	<input type='range' value='{{y}}' min='-500' max='500'>
-	<input type='range' value='{{z}}' min='-500' max='500'>
-	<br>
-	<input type='range' value='{{rotateX}}' min='-85' max='85'>
-	<input type='range' value='{{rotateY}}' min='-85' max='85'>
-	<input type='range' value='{{rotateZ}}' min='-85' max='85'>
-</div>
 <div class='space' style='' >
 	<div class='user-view'
 		 style='-webkit-transform:
-		 	translate3d({{x}}px, {{y}}px, {{z}}px)
 		 	rotateX({{rotateX}}deg)
 		 	rotateY({{rotateY}}deg)
-		 	rotateZ({{rotateZ}}deg)'>
+		 	rotateZ({{rotateZ}}deg)
+		 	translate3d({{x}}px, {{y}}px, {{z}}px)
+		 	'>
 		{{ yield }}
 	</div>
 </div>

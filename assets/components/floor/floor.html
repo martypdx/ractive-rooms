@@ -1,4 +1,6 @@
 <div class='plane floor  {{class||"grey"}}'
 	 style='height:{{depth}}px;
 	 		width: {{width}}px;
-	 		-webkit-transform: rotateX(90deg) translate3d({{x}}px, {{-z}}px, {{y}}px);'></div>
+	 		-webkit-transform: rotateX(90deg) translate3d({{x}}px, {{-z}}px, {{y}}px);'>
+	{{yield}}
+</div>

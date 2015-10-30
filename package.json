@@ -1,22 +1,31 @@
 {
-  "name": "ractive-project",
-  "version": "0.1.0",
-  "description": "starter ractive project",
+  "name": "ractive-3d",
+  "version": "0.0.1",
+  "description": "Easy CSS 3d space modelling",
+  "main": "gobblefile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "@martypdx",
-  "license": "MIT",
-  "dependencies": {
-    "ractive": "^0.6.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martypdx/ractive-rooms.git"
   },
+  "author": "Marty Nelson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martypdx/ractive-rooms/issues"
+  },
+  "homepage": "https://github.com/martypdx/ractive-rooms",
   "devDependencies": {
-    "gobble": "^0.6.1",
-    "gobble-browserify": "^0.1.0",
-    "gobble-es6-transpiler": "^0.1.0",
-    "gobble-esperanto": "^0.1.0",
-    "gobble-ractive": "^0.1.1",
-    "gobble-sass": "^0.2.0",
-    "node-sass": "^0.9.6"
+    "browserify": "^12.0.1",
+    "gobble-babel": "^5.5.8",
+    "gobble-browserify": "^0.6.1",
+    "gobble-cli": "^0.6.0",
+    "gobble-rollup": "^0.11.0",
+    "gobble-sass": "^0.5.0",
+    "node-sass": "^3.4.1"
+  },
+  "dependencies": {
+    "ractive": "^0.7.3"
   }
 }

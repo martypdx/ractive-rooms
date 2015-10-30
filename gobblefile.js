@@ -1,42 +1,54 @@
 var gobble = require('gobble'),
-	makeComponent = require('./gobble/make-component'),
-	sass = require('./gobble/sass-file'),
-	join = require('path').join
+	makeComponent = require('./gobble-plugins/make-component'),
+	sass = require('./gobble-plugins/sass-file'),
+	join = require('path').join; //,
+// 	package = require( './package.json' ),
+// 	bundleModules = require( './gobble-bundle-modules' );
 
-var js = gobble( 'assets/js' )
-	.exclude('vendor/*.js')
-	.exclude('passthru/*.js')
-	.transform( 'esperanto', { type: 'cjs', defaultOnly: true })
-	.transform( 'es6-transpiler')
+// var modules = gobble( 'assets/js/passthru' )
+// 	.transform( bundleModules, {
+// 		modules: Object.keys( package.dependencies ),
+// 		dest: 'modules.js'
+// 	});
 
-var vendor = gobble('assets/js/vendor').moveTo('js');
+var css = gobble('assets/scss').transform( 'sass', {
+	src: 'main.scss',
+	dest: 'min.css'
+});
 
-var passthru = gobble('assets/js/passthru').moveTo('js');
-
-var css = gobble('assets/scss')
-	.transform( 'sass', { src: 'main.scss', dest: 'min.css' })
-css = gobble([css, gobble('assets/scss/fonts').moveTo('fonts')])
-
-var images = gobble('assets/images').moveTo('images')
+var images = gobble('assets/images').moveTo('images');
 
 var components = gobble('assets/components')
-	.transform(sass, { includePaths: [ join(process.cwd(), 'assets/scss/include') ] })
-	.transform( 'esperanto', { type: 'cjs', defaultOnly: true })
-	.transform( 'es6-transpiler', { globals: {
-		component: true,
-		alert: true
-	}})
-	.transform(makeComponent)
-	.transform( 'ractive', { type: 'cjs' } )
-
-var bundle = gobble([components, js, vendor])
-	.transform( 'browserify', {
-	  entries: './index.js',
-	  dest: 'bundle.js',
-	  debug: gobble.env() !== 'production'
+	.transform( sass, {
+		includePaths: [ join(process.cwd(), 'assets/scss/include') ]
 	})
+	.transform('babel')
+	.transform( makeComponent )
+	.transform('ractive', { type: 'es6' });
 
-var index = gobble('assets')
-	.include('index.html')
+var js = gobble( 'assets/js' ).transform( 'babel');
 
-module.exports = gobble( [ bundle, passthru, css, images, index ] );
+var bundle = gobble([ js, components ]).transform( 'rollup', {
+  // REQUIRED - the file to start bundling from
+  entry: 'index.js',
+
+  // where to write the file to. If omitted,
+  // will match the entry module's name
+  dest: 'bundle.js',
+
+  // what type of module to create - can be one of
+  // 'amd', 'cjs', 'es6', 'iife', 'umd'. Defaults to 'cjs'
+  format: 'iife',
+
+  // if generating a 'umd' module, and the entry module
+  // (and therefore the bundle) has exports, specify
+  // a global name
+  // moduleName: 'myApp', // becomes `window.myApp`
+
+  //external: ['ractive']
+
+});
+
+var index = gobble('assets').include('index.html')
+
+module.exports = gobble( [ bundle, /*modules,*/ css, images, index ] );

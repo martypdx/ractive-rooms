@@ -1,8 +1,31 @@
+<h1>ractive-3d!</h1>
+<div decorator='stroll:{ x: "strollX", y: "strollZ" }, { x: 200, y: 3000 }, { x: 2000, y: 0 }'>
+
 <space>
-	ractive-rooms!
-	<floor width='1000' depth='1000' class='blue' y='-1'/>
-	<room z='200' height='100'/>
-	<room x='250' z='50' height='100'/>
-	<room x='300' z='300' height='100'/>
+	<floor width='3000' depth='3000' class='blue' y='-1'>
+		<div style='position: absolute;
+					top: 0; bottom: 0; left: 0; right: 0;'
+			 decorator='stroll:
+			 	{ x: "strollX", y: "strollZ" },
+			 	{ x: 200, y: 3000 },
+			 	{ x: 2000, y: 0 }'>
+		</div>
+	</floor>
+
+	{{#rooms}}
+	<room x='{{x}}' z='{{z}}' height='{{height}}'/>
+	{{/}}
+
+	{{console.log(this)}}
+	{{#girls}}
+		<wall x='{{x}}' z='{{z}}' y='0'
+			  height='300' length='200'
+			  class='girl'>
+
+			<img src='{{image}}'>
+
+		</wall>
+	{{/}}
 </space>
+</div>
 

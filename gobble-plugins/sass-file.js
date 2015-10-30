@@ -3,7 +3,8 @@ var sass = require('node-sass');
 function sassFile(input, options) {
 	options = options || {}
 	options.data = input
-	return sass.renderSync(options)
+	var result = sass.renderSync(options);
+	return result.css;
 }
 
 sassFile.defaults = {
