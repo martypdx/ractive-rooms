@@ -13,7 +13,8 @@ var modules = gobble( 'assets/js/passthru' )
 
 var css = gobble('assets/scss').transform( 'sass', {
 	src: 'main.scss',
-	dest: 'min.css'
+	dest: 'min.css',
+	sourceMap: true
 });
 
 var images = gobble('assets/images').moveTo('images');
@@ -35,24 +36,17 @@ var js = gobble( 'assets/js' ).transform( 'babel', {
 	});
 
 var bundle = gobble([ js, components ]).transform( 'rollup', {
-  // REQUIRED - the file to start bundling from
   entry: 'index.js',
-
-  // where to write the file to. If omitted,
-  // will match the entry module's name
   dest: 'bundle.js',
 
   // what type of module to create - can be one of
   // 'amd', 'cjs', 'es6', 'iife', 'umd'. Defaults to 'cjs'
   format: 'umd',
 
-  // if generating a 'umd' module, and the entry module
-  // (and therefore the bundle) has exports, specify
-  // a global name
-  moduleName: 'myApp', // becomes `window.myApp`
+  sourceMaps: true,
 
-  globals: { ractive: 'Ractive' }
-  //external: ['ractive']
+  // globals: { ractive: 'Ractive' }
+  // external: ['ractive']
 
 });
 

@@ -39,6 +39,7 @@ export default function stroll(node, position, max, min){
         min || { x: 0, y: 0 },
         handler
     );
+    console.log( 'start' );
     scroll.start();
 
     return {
@@ -183,6 +184,7 @@ function scroller(listenOn, toScroll, max, min, handler){
     function tap(e) {
         pressed = true;
         reference = pos(e);
+        console.log( reference );
 
         velocity = { x: 0, y: 0 };
         amplitude = { x: 0, y: 0 };

@@ -1,11 +1,12 @@
-<h1>ractive-3d!</h1>
+<h1>ractive-3D CSS!</h1>
+
 <div decorator='stroll:{ x: "strollX", y: "strollZ" }, { x: 200, y: 3000 }, { x: 2000, y: 0 }'>
 
 <space>
 	<floor width='3000' depth='3000' class='blue' y='-1'>
 		<div style='position: absolute;
 					top: 0; bottom: 0; left: 0; right: 0;'
-			 decorator='stroll:
+			 x-decorator='stroll:
 			 	{ x: "strollX", y: "strollZ" },
 			 	{ x: 200, y: 3000 },
 			 	{ x: 2000, y: 0 }'>
@@ -16,16 +17,14 @@
 	<room x='{{x}}' z='{{z}}' height='{{height}}'/>
 	{{/}}
 
-	{{console.log(this)}}
 	{{#girls}}
 		<wall x='{{x}}' z='{{z}}' y='0'
 			  height='300' length='200'
 			  class='girl'>
-
 			<img src='{{image}}'>
 
 		</wall>
 	{{/}}
 </space>
-</div>
 
+</div>

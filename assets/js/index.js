@@ -1,4 +1,4 @@
-// import Ractive from 'ractive';
+import Ractive from 'ractive';
 import Components from './components';
 import App from './app';
 import stroll from './new-stroll';

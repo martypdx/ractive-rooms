@@ -2,18 +2,21 @@ var browserify = require( 'browserify' ),
 	fs = require( 'fs' ),
 	join = require( 'path' ).join;
 
-module.exports = function bundleModules( inputdir, outputdir, options, callback ) {
+module.exports = function bundleModules( src, dir, options ) {
 	options = options || {};
-	var modules = options.modules;
-	if ( !modules || !modules.length ) { return; }
+	// const { modules, dest } = options;
+	const modules = options.modules, dest = options.dest;
+	if ( !modules || !modules.length ) return;
 
-	var b = browserify();
-	modules.forEach( function( module ) {
-		b.require( module );
+	const b = browserify();
+	modules.forEach( module => b.require( module ) );
+
+	const bundle = join( dir, dest || 'modules.js' );
+
+	return new Promise( ( r, j ) => {
+		b.bundle()
+			.pipe( fs.createWriteStream( bundle ) )
+			.on( 'finish', r )
+			.on( 'error', j );
 	});
-
-	var outfile = join( outputdir, options.dest || 'modules.js' );
-
-	var myFile = fs.createWriteStream( outfile );
-	b.bundle().pipe( myFile ).on( 'finish', callback );
 };
