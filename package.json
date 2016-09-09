@@ -4,6 +4,7 @@
   "description": "Easy CSS 3d space modelling",
   "main": "gobblefile.js",
   "scripts": {
+    "start": "gobble",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +19,11 @@
   "homepage": "https://github.com/martypdx/ractive-rooms",
   "devDependencies": {
     "browserify": "^12.0.1",
+    "gobble": "^0.11.3",
     "gobble-babel": "^5.5.8",
     "gobble-browserify": "^0.6.1",
     "gobble-cli": "^0.6.0",
+    "gobble-ractive": "^0.2.0",
     "gobble-rollup": "^0.11.0",
     "gobble-sass": "^0.5.0",
     "node-sass": "^3.4.1"
