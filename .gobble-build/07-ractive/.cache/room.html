@@ -1,0 +1,33 @@
+import Ractive from 'ractive';
+var __options__ = {
+	template: {v:3,t:[{p:[1,1,0],t:7,e:"div",a:{"class":"plane room",style:["-webkit-transform: translate3d(",{t:2,r:"x",p:[1,63,62]},"px, ",{t:2,x:{r:["y"],s:"-_0"},p:[1,72,71]},"px, ",{t:2,x:{r:["z"],s:"-_0"},p:[1,82,81]},"px);"]},f:[{p:[2,2,95],t:7,e:"floor",a:{depth:[{t:2,r:"depth",p:[2,16,109]}],width:[{t:2,r:"width",p:[2,34,127]}]}}," ",{p:[3,2,141],t:7,e:"wall",a:{length:[{t:2,r:"width",p:[3,16,155]}],height:[{t:2,r:"height",p:[3,35,174]}]}}," ",{p:[4,2,189],t:7,e:"wall",a:{length:[{t:2,r:"width",p:[4,16,203]}],height:[{t:2,r:"height",p:[4,35,222]}],z:[{t:2,r:"depth",p:[4,50,237]}]}}," ",{p:[5,2,251],t:7,e:"side-wall",a:{length:[{t:2,r:"depth",p:[5,21,270]}],height:[{t:2,r:"height",p:[5,40,289]}]}}," ",{p:[6,2,304],t:7,e:"side-wall",a:{length:[{t:2,r:"depth",p:[6,21,323]}],height:[{t:2,r:"height",p:[6,40,342]}],x:[{t:2,r:"width",p:[6,55,357]}]}}]}]},
+},
+component={},
+__prop__,
+__export__;
+
+
+component.exports = {
+	data: {
+		height: 30,
+		depth: 200,
+		width: 200,
+		x: 0, y: 0, z: 0
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/room/room.js.map
+
+
+
+if ( typeof component.exports === "object" ) {
+	for ( __prop__ in component.exports ) {
+		if ( component.exports.hasOwnProperty(__prop__) ) {
+			__options__[__prop__] = component.exports[__prop__];
+		}
+	}
+}
+
+__export__ = Ractive.extend( __options__ );
+
+export default __export__;
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/07-ractive/.cache/room.html.map

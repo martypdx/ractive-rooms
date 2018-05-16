@@ -1,0 +1,92 @@
+<h1>ractive-3D CSS!</h1>
+
+<div decorator='stroll:{ x: "strollX", y: "strollZ" }, { x: 200, y: 3000 }, { x: 2000, y: 0 }'>
+
+<space>
+	<floor width='3000' depth='3000' class='blue' y='-1'>
+		<div style='position: absolute;
+					top: 0; bottom: 0; left: 0; right: 0;'
+			 x-decorator='stroll:
+			 	{ x: "strollX", y: "strollZ" },
+			 	{ x: 200, y: 3000 },
+			 	{ x: 2000, y: 0 }'>
+		</div>
+	</floor>
+
+	{{#rooms}}
+	<room x='{{x}}' z='{{z}}' height='{{height}}'/>
+	{{/}}
+
+	{{#girls}}
+		<wall x='{{x}}' z='{{z}}' y='0'
+			  height='300' length='200'
+			  class='girl'>
+			<img src='{{image}}'>
+
+		</wall>
+	{{/}}
+</space>
+
+</div>
+
+
+<style>
+p {
+  color: blue; }
+
+img {
+  transition: transform 300ms ease-in-out; }
+
+img:hover {
+  transform: translate3d(-10px, 0, 200px); }
+
+
+</style>
+
+
+<script>
+// Returns a random integer between min (included) and max (included)
+function getRandom(min, max) {
+	return Math.floor(Math.random() * (max + 1 - min)) + min;
+}
+
+var count = getRandom(3, 10),
+    rooms = new Array(count);
+
+for (var i = 0; i < count; i++) {
+	rooms[i] = {
+		x: getRandom(100, 2500),
+		z: getRandom(100, 2500),
+		height: getRandom(50, 500)
+	};
+};
+
+var girls = [{ x: 1200, z: 500, image: 'images/happy-girl.png' }, { x: 1700, z: 1700, image: 'images/mad-girl.png' }, { x: 2100, z: 600, image: 'images/in-a-band-girl.png' }, { x: 790, z: 1100, image: 'images/kick-it-girl.png' }];
+
+component.exports = {
+	noCssTransform: true,
+	data: {
+		x: -2000, y: 0, z: 0,
+		rotateX: -15, rotateY: 0, rotateZ: 0,
+		rooms: rooms,
+		girls: girls
+	},
+	computed: {
+		strollZ: {
+			get: '-${z}',
+			set: function set(z) {
+				this.set('z', -z);
+			}
+		},
+		strollX: {
+			get: '-${x}',
+			set: function set(x) {
+				this.set('x', -x);
+			}
+		}
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/app/app.js.map
+
+
+</script>

@@ -1,0 +1,33 @@
+import Ractive from 'ractive';
+var __options__ = {
+	template: {v:3,t:[{p:[1,1,0],t:7,e:"div",a:{"class":["plane floor ",{t:2,x:{r:["class"],s:"_0||\"grey\""},p:[1,26,25]}],style:["height:",{t:2,r:"depth",p:[2,17,60]},"px; width: ",{t:2,r:"width",p:[3,12,84]},"px; -webkit-transform: rotateX(90deg) translate3d(",{t:2,r:"x",p:[4,51,147]},"px, ",{t:2,x:{r:["z"],s:"-_0"},p:[4,60,156]},"px, ",{t:2,r:"y",p:[4,70,166]},"px);"]},f:[{t:16,p:[5,2,179]}]}]},
+	css:".floor{-webkit-transform-origin-y:100%}",
+},
+component={},
+__prop__,
+__export__;
+
+
+component.exports = {
+	data: {
+		depth: 100,
+		width: 100,
+		x: 0, y: 0, z: 0
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/floor/floor.js.map
+
+
+
+if ( typeof component.exports === "object" ) {
+	for ( __prop__ in component.exports ) {
+		if ( component.exports.hasOwnProperty(__prop__) ) {
+			__options__[__prop__] = component.exports[__prop__];
+		}
+	}
+}
+
+__export__ = Ractive.extend( __options__ );
+
+export default __export__;
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/07-ractive/.cache/floor.html.map

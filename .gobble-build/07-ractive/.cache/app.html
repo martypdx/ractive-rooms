@@ -1,0 +1,67 @@
+import Ractive from 'ractive';
+var __options__ = {
+	template: {v:3,t:[{p:[1,1,0],t:7,e:"h1",f:["ractive-3D CSS!"]}," ",{p:[3,1,26],t:7,e:"div",o:{n:"stroll",a:[{x:"strollX",y:"strollZ"},{x:200,y:3000},{x:2000,y:0}]},f:[{p:[5,1,123],t:7,e:"space",f:[{p:[6,2,132],t:7,e:"floor",a:{width:"3000",depth:"3000","class":"blue",y:"-1"},f:[{p:[7,3,188],t:7,e:"div",a:{style:"position: absolute;\n\t\t\t\t\ttop: 0; bottom: 0; left: 0; right: 0;","x-decorator":"stroll:\n\t\t\t \t{ x: \"strollX\", y: \"strollZ\" },\n\t\t\t \t{ x: 200, y: 3000 },\n\t\t\t \t{ x: 2000, y: 0 }"},f:[]}]}," ",{t:4,f:[{p:[17,2,410],t:7,e:"room",a:{x:[{t:2,r:"x",p:[17,11,419]}],z:[{t:2,r:"z",p:[17,21,429]}],height:[{t:2,r:"height",p:[17,36,444]}]}}],r:"rooms",p:[16,2,398]}," ",{t:4,f:[{p:[21,3,480],t:7,e:"wall",a:{x:[{t:2,r:"x",p:[21,12,489]}],z:[{t:2,r:"z",p:[21,22,499]}],y:"0",height:"300",length:"200","class":"girl"},f:[{p:[24,4,565],t:7,e:"img",a:{src:[{t:2,r:"image",p:[24,14,575]}]}}]}],r:"girls",p:[20,2,467]}]}]}]},
+	css:"p{color:#00f}img{transition:transform .3s ease-in-out}img:hover{transform:translate3d(-10px,0,200px)}",
+},
+component={},
+__prop__,
+__export__;
+
+
+// Returns a random integer between min (included) and max (included)
+function getRandom(min, max) {
+	return Math.floor(Math.random() * (max + 1 - min)) + min;
+}
+
+var count = getRandom(3, 10),
+    rooms = new Array(count);
+
+for (var i = 0; i < count; i++) {
+	rooms[i] = {
+		x: getRandom(100, 2500),
+		z: getRandom(100, 2500),
+		height: getRandom(50, 500)
+	};
+};
+
+var girls = [{ x: 1200, z: 500, image: 'images/happy-girl.png' }, { x: 1700, z: 1700, image: 'images/mad-girl.png' }, { x: 2100, z: 600, image: 'images/in-a-band-girl.png' }, { x: 790, z: 1100, image: 'images/kick-it-girl.png' }];
+
+component.exports = {
+	noCssTransform: true,
+	data: {
+		x: -2000, y: 0, z: 0,
+		rotateX: -15, rotateY: 0, rotateZ: 0,
+		rooms: rooms,
+		girls: girls
+	},
+	computed: {
+		strollZ: {
+			get: '-${z}',
+			set: function set(z) {
+				this.set('z', -z);
+			}
+		},
+		strollX: {
+			get: '-${x}',
+			set: function set(x) {
+				this.set('x', -x);
+			}
+		}
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/app/app.js.map
+
+
+
+if ( typeof component.exports === "object" ) {
+	for ( __prop__ in component.exports ) {
+		if ( component.exports.hasOwnProperty(__prop__) ) {
+			__options__[__prop__] = component.exports[__prop__];
+		}
+	}
+}
+
+__export__ = Ractive.extend( __options__ );
+
+export default __export__;
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/07-ractive/.cache/app.html.map

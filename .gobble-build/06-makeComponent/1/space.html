@@ -1,0 +1,71 @@
+<div class='space' style='' >
+	<div class='user-view'
+		 style='-webkit-transform:
+		 	rotateX({{rotateX}}deg)
+		 	rotateY({{rotateY}}deg)
+		 	rotateZ({{rotateZ}}deg)
+		 	translate3d({{x}}px, {{y}}px, {{z}}px)
+		 	'>
+		{{ yield }}
+	</div>
+</div>
+
+
+
+<style>
+.space {
+  position: absolute;
+  bottom: 20px;
+  top: 45px;
+  right: 20px;
+  left: 20px;
+  -webkit-perspective: 850;
+  overflow: visible; }
+
+.controls {
+  position: absolute;
+  top: 0;
+  height: 45px; }
+
+.user-view {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d; }
+
+.plane {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  -webkit-transform-style: preserve-3d; }
+
+.grey {
+  background: lightgrey;
+  border: 1px solid darkgrey; }
+
+.blue {
+  background: lightsteelblue;
+  border: 1px solid steelblue; }
+
+.green {
+  background: lightgreen;
+  border: 1px solid green; }
+
+.pink {
+  background: lightpink;
+  border: 1px solid pink; }
+
+
+</style>
+
+
+<script>
+component.exports = {
+	noCssTransform: true
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/space/space.js.map
+
+
+</script>

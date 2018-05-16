@@ -1,0 +1,26 @@
+<div class='plane room' style='-webkit-transform: translate3d({{x}}px, {{-y}}px, {{-z}}px);'>
+	<floor depth='{{depth}}' width='{{width}}'/>
+	<wall length='{{width}}' height='{{height}}'/>
+	<wall length='{{width}}' height='{{height}}' z='{{depth}}'/>
+	<side-wall length='{{depth}}' height='{{height}}'/>
+	<side-wall length='{{depth}}' height='{{height}}' x='{{width}}'/>
+</div>
+
+<!-- 	<side-wall length='500' height='300'/>
+	<wall length='200' height='300' z='500'/>
+	<floor depth='500' width='200'/> -->
+
+
+<script>
+component.exports = {
+	data: {
+		height: 30,
+		depth: 200,
+		width: 200,
+		x: 0, y: 0, z: 0
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/room/room.js.map
+
+
+</script>

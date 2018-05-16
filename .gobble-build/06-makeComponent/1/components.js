@@ -1,0 +1,13 @@
+import Ractive from "ractive";
+import C0 from "./app";
+import C1 from "./floor";
+import C2 from "./room";
+import C3 from "./side-wall";
+import C4 from "./space";
+import C5 from "./wall";
+Ractive.components['app'] = C0;
+Ractive.components['floor'] = C1;
+Ractive.components['room'] = C2;
+Ractive.components['side-wall'] = C3;
+Ractive.components['space'] = C4;
+Ractive.components['wall'] = C5;

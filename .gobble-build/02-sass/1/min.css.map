@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"sourceRoot": "/Users/marty/dev/ractive-rooms/.gobble-build/02-sass/1",
+	"file": "min.css",
+	"sources": [
+		"../../../assets/scss/main.scss"
+	],
+	"sourcesContent": [
+		"\n"
+	],
+	"mappings": "",
+	"names": []
+}

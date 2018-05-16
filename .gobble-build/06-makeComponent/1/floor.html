@@ -1,0 +1,28 @@
+<div class='plane floor  {{class||"grey"}}'
+	 style='height:{{depth}}px;
+	 		width: {{width}}px;
+	 		-webkit-transform: rotateX(90deg) translate3d({{x}}px, {{-z}}px, {{y}}px);'>
+	{{yield}}
+</div>
+
+
+<style>
+.floor {
+  -webkit-transform-origin-y: 100%; }
+
+
+</style>
+
+
+<script>
+component.exports = {
+	data: {
+		depth: 100,
+		width: 100,
+		x: 0, y: 0, z: 0
+	}
+};
+//# sourceMappingURL=/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/.cache/floor/floor.js.map
+
+
+</script>

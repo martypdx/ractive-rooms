@@ -1,0 +1,1 @@
+{"version":3,"sources":["/Users/marty/dev/ractive-rooms/.gobble-build/04-sassFile/1/space/space.js"],"names":[],"mappings":"AAAA,SAAS,CAAC,OAAO,GAAG;AACnB,eAAc,EAAE,IAAI;CACpB,CAAA","file":"/Users/marty/dev/ractive-rooms/.gobble-build/05-babel/1/space/space.js","sourcesContent":["component.exports = {\n\tnoCssTransform: true\n}\n"]}
